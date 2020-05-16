@@ -7,9 +7,10 @@ __pycache__/
 *.so
 
 # Virtual Environment
-Include
-Lib
-Scripts
+env/
+Include/
+Lib/
+Scripts/
 pyvenv.cfg
 
 # Distribution / packaging

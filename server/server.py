@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-player_list = pd.read_csv("Player_List.csv")
+player_list = pd.read_csv("data/player_list.csv")
 
 @app.route('/find/<string:ptype>/<string:pname>', methods=['GET'])
 def find_player(ptype, pname):
