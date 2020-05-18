@@ -1,20 +1,19 @@
-let playerNameInputField = document.getElementById('player-name');
-let playerTypeInputField = document.getElementById('player-type');
+let playerNameInputField = document.getElementById("player-name");
+let playerTypeInputField = document.getElementById("player-type");
 let responseField = document.getElementById("response-values");
-let baseServerPath = 'http://localhost:5000';
+let baseServerPath = "http://localhost:5000";
 
-playerTypeInputField.dropdown();
-
-playerNameInputField.addEventListener('input', async () => {
+playerNameInputField.addEventListener("input", async () => {
     responseField.innerHTML = "";
     if (playerNameInputField.value.length < 3) {
         return;
     }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = async function() {
+    xhttp.onreadystatechange = async function () {
         if (this.readyState == 4 && this.status == 200) {
-            let players = await getPlayers(JSON.parse(this.responseText));
+            console.log(this.responseText);
+            let players = await getPlayers(this.responseText);
             responseField.innerHTML = "";
             responseField.appendChild(players);
         }
@@ -30,13 +29,13 @@ async function getPlayers(players) {
     let index = 0;
     while (players[index] != undefined) {
         let player = players[index];
-        let div = document.createElement('div');
+        let div = document.createElement("div");
         div.classList.add("player-card");
-        let name = document.createElement('span');
-        let foreigner = document.createElement('span');
+        let name = document.createElement("span");
+        let foreigner = document.createElement("span");
 
-        name.innerHTML = player['Name']
-        if (player['Foreigner'] == true) {
+        name.innerHTML = player["Name"];
+        if (player["Foreigner"] == true) {
             foreigner.innerHTML = "Foreigner";
         } else {
             foreigner.innerHTML = "Indian";
