@@ -12,7 +12,7 @@ playerNameInputField.addEventListener('input', async () => {
     }
 
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = async function () {
+    xhttp.onreadystatechange = async function() {
         if (this.readyState == 4 && this.status == 200) {
             let players = await getPlayers(JSON.parse(this.responseText));
             responseField.innerHTML = "";
