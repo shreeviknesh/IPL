@@ -23,3 +23,9 @@ def find_player(ptype, pname):
         index += 1
 
     return response
+
+# Development only code
+# During production, set the environment variable in the server host 
+# and use `flask run`
+if __name__ == '__main__':
+    app.run(debug=True)

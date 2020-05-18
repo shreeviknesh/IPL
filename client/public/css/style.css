@@ -1,0 +1,19 @@
+#user-choice {
+    text-align: center;
+}
+
+#response-values {
+    text-align: center;
+}
+
+.player-card {
+    margin: 0.5em 1em;
+    width: 50vh;
+    margin: 0.2em auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.player-card > span {
+    width: 50%;
+}

@@ -1,20 +1,26 @@
 let playerNameInputField = document.getElementById('player-name');
 let playerTypeInputField = document.getElementById('player-type');
 let responseField = document.getElementById("response-values");
+let baseServerPath = 'http://localhost:5000';
+
+playerTypeInputField.dropdown();
 
 playerNameInputField.addEventListener('input', async () => {
     responseField.innerHTML = "";
     if (playerNameInputField.value.length < 3) {
         return;
     }
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = async function () {
         if (this.readyState == 4 && this.status == 200) {
             let players = await getPlayers(JSON.parse(this.responseText));
+            responseField.innerHTML = "";
             responseField.appendChild(players);
         }
     };
-    let path = `http://localhost:5000/find/${playerTypeInputField.value}/${playerNameInputField.value}`;
+
+    let path = `${baseServerPath}/find/${playerTypeInputField.value}/${playerNameInputField.value}`;
     xhttp.open("GET", path, true);
     xhttp.send();
 });
